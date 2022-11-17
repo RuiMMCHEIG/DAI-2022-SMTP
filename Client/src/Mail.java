@@ -32,4 +32,9 @@ public class Mail {
     public String getMail() {
         return mail;
     }
+
+    @Override
+    public String toString() {
+        return "Mail id : " + id + ", mail : " + mail;
+    }
 }
