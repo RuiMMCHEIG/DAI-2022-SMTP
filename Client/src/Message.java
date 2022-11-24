@@ -17,4 +17,9 @@ public class Message {
     public String getBody() {
         return body;
     }
+
+    @Override
+    public String toString() {
+        return "Message header : " + header + "\nMessage body :\n" + body;
+    }
 }
