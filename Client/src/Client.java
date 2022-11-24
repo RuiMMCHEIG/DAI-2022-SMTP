@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.random.RandomGenerator;
@@ -101,11 +98,47 @@ public class Client {
                 throw new RuntimeException("There must be at least 1 message for the Client to run correctly!");
             }
 
-            /* Links */
+            /* Groups selection */
 
-            Random r = new Random();
-            for (Group g : groups) {
-                g.setMessage(messages.get(r.nextInt(messages.size())));
+            for (int i = 0; i < groups.size(); ++i) {
+                System.out.println("Group " + (i + 1) + " :");
+                System.out.println(groups.get(i));
+            }
+            System.out.print("\nPlease select which groups shall send a message\n" +
+                    "Input groups numbers separated by ',' and no spaces : ");
+
+            LinkedList<Group> selectedGroups = null;
+            boolean invalid = true;
+            while (invalid) {
+                try {
+                    selectedGroups = new LinkedList<>();
+                    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+                    String s = input.readLine();
+
+                    String[] ss = s.split(",");
+                    invalid = false;
+
+                    for (String g : ss) {
+                        try {
+                            selectedGroups.add(groups.get(Integer.parseInt(g) - 1));
+                        }
+                        catch(Exception ex) {
+                            System.out.print("\n" + g + " is not a valid Group number, please try again : ");
+                            invalid = true;
+                            break;
+                        }
+                    }
+                }
+                catch(IOException ioEx) {
+                    System.out.println(ioEx.getMessage());
+                }
+            }
+
+            /* Messages selection */
+
+            for (Group g : selectedGroups) {
+                System.out.println("\nPreparing to send prank for the following group : ");
+                System.out.println(g);
             }
         }
         catch(FileNotFoundException fnfEx) {
