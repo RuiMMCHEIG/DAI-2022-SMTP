@@ -1,27 +1,49 @@
 import java.util.LinkedList;
-import java.util.List;
 
 public class Group {
-    private final int sender;
-    private final LinkedList<Integer> receivers;
+    private final Mail sender;
+    private final LinkedList<Mail> receivers;
+
+    private Message message;
 
     {
         receivers = new LinkedList<>();
     }
 
-    public Group(int sender, Integer[] receivers) {
-        if (receivers.length < 2) {
+    public Group(Mail sender, LinkedList<Mail> receivers) {
+        if (receivers.size() < 2) {
             throw new IllegalArgumentException("There must be at least 2 receivers in a group!");
         }
         this.sender = sender;
-        this.receivers.addAll(List.of(receivers));
+        this.receivers.addAll(receivers);
     }
 
-    public int getSender() {
+    public Group(Mail sender, LinkedList<Mail> receivers, Message message) {
+        this(sender, receivers);
+        setMessage(message);
+    }
+
+    public Mail getSender() {
         return sender;
     }
 
-    public Integer[] getReceivers() {
-        return (Integer[]) receivers.toArray();
+    public Mail[] getReceivers() {
+        return (Mail[]) receivers.toArray();
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("Group sender : " + sender.getMail() + "\nGroup receivers :");
+        for (Mail m : receivers) {
+            s.append("\n-").append(m.getMail());
+        }
+        if (message != null) {
+            s.append("\nMessage : ").append(message.getHeader()).append("\n").append(message.getBody());
+        }
+        return s.toString();
     }
 }
