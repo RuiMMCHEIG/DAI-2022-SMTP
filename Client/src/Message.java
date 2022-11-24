@@ -3,6 +3,9 @@ public class Message {
     private final String body;
 
     public Message(String header, String body) {
+        if (header.isEmpty()) {
+            throw new RuntimeException("A message's header can't be empty!");
+        }
         this.header = header;
         this.body = body;
     }
