@@ -75,9 +75,9 @@ public class Client {
                         }
                         case 1 -> {
                             String s = is.readLine();
-                            if (s.isEmpty()) {
+                            if (s.equals(".")) {
                                 i = 0;
-                                messages.add(new Message(header, message));
+                                messages.add(new Message(header, message.substring(0, message.length()-1)));
                             } else {
                                 message += s + "\n";
                             }
@@ -85,9 +85,6 @@ public class Client {
                         default ->
                                 throw new RuntimeException("i has been put to something else than 0 and 1 in message reading.");
                     }
-                }
-                if (!header.isEmpty() && !message.isEmpty()) {
-                    messages.add(new Message(header, message));
                 }
             }
             catch(IOException ioEx) {
@@ -104,8 +101,10 @@ public class Client {
                 System.out.println("Group " + (i + 1) + " :");
                 System.out.println(groups.get(i));
             }
-            System.out.print("\nPlease select which groups shall send a message\n" +
-                    "Input groups numbers separated by ',' and no spaces : ");
+            System.out.print("""
+
+                    Please select which groups shall send a message
+                    Input groups numbers separated by ',' and no spaces :\s""");
 
             LinkedList<Group> selectedGroups = null;
             boolean invalid = true;
