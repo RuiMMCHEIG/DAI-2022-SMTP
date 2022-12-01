@@ -66,7 +66,7 @@ Once openjdk is installed, we will configure our Docker image using our Dockerfi
 
 These files are located in the "*Docker*" folder.
 
-The Dockerfile is already prepared and you don't need to modify it except if you want to change ports numbers for SMTP/Web Interface, if that's the case check our [Change ports](<#How to change ports>) section.
+The Dockerfile is already prepared and you don't need to modify it except if you want to change ports numbers for SMTP/Web Interface, if that's the case check our [Change ports](#how-to-change-ports) section.
 
 
 ### Building the container
@@ -145,7 +145,7 @@ ENTRYPOINT ["java", "-jar", "MockMock-1.4.1-SNAPSHOT.one-jar.jar", "-p", "newSmt
 ```
 Don't forget to only use unsused ports to avoid any issues.
 
-After every changes in the Dockerfile, you will need to rebuild the image. Follow instructions from [Docker Image Build](<#Building the container>).
+After every changes in the Dockerfile, you will need to rebuild the image. Follow instructions from [Docker Image Build](#building-the-container).
 
 And then, in a terminal, execute the following command to run the container:
 
@@ -156,9 +156,9 @@ Change *NewWebInterfacePort* with the port number you want.
 
 ## How to use
 
-First, make sure you've [setup the SMTP server](<#SMTP Server Setup>) and that it's running.
+First, make sure you've [setup the SMTP server](#smtp-server-setup) and that it's running.
 
-Configure all the .config files in \\Client\\CONFIG\\. If you're not sure how to set them up, please [see our Client details sections](<#Client details>)
+Configure all the .config files in \\Client\\CONFIG\\. If you're not sure how to set them up, please [see our Client details sections](#client-details)
 
 Once that's done, either :
 
