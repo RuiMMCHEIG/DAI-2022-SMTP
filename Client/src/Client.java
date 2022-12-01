@@ -138,6 +138,42 @@ public class Client {
             for (Group g : selectedGroups) {
                 System.out.println("\nPreparing to send prank for the following group : ");
                 System.out.println(g);
+
+                for (int i = 0; i < messages.size(); ++i) {
+                    System.out.println("\nMessage " + (i + 1) + " :");
+                    System.out.println(messages.get(i));
+                }
+                System.out.print("""
+
+                    Please select which messages shall be sent for that group
+                    Input messages numbers separated by ',' and no spaces :\s""");
+
+                LinkedList<Message> selectedMessages = null;
+                invalid = true;
+                while (invalid) {
+                    try {
+                        selectedMessages = new LinkedList<>();
+                        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+                        String s = input.readLine();
+
+                        String[] ss = s.split(",");
+                        invalid = false;
+
+                        for (String m : ss) {
+                            try {
+                                selectedMessages.add(messages.get(Integer.parseInt(m) - 1));
+                            }
+                            catch(Exception ex) {
+                                System.out.print("\n" + m + " is not a valid Message number, please try again : ");
+                                invalid = true;
+                                break;
+                            }
+                        }
+                    }
+                    catch(IOException ioEx) {
+                        System.out.println(ioEx.getMessage());
+                    }
+                }
             }
         }
         catch(FileNotFoundException fnfEx) {
