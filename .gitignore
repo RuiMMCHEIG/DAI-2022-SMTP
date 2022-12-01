@@ -22,3 +22,5 @@
 hs_err_pid*
 
 Client/.idea/
+
+.idea/workspace.xml
