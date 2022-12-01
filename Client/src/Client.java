@@ -1,11 +1,19 @@
 import java.io.*;
+import java.net.Socket;
 import java.util.LinkedList;
-import java.util.Random;
-import java.util.random.RandomGenerator;
 
 public class Client {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        String host = "localhost";
+        int port = 25;
+
         try {
+
+            // Connection au serveur SMTP local
+            Socket servSocket = new Socket(host, port);
+            DataOutputStream outputs = new DataOutputStream(servSocket.getOutputStream());
+            DataInputStream inputs = new DataInputStream(servSocket.getInputStream());
 
             /* Mails */
 
@@ -174,10 +182,30 @@ public class Client {
                         System.out.println(ioEx.getMessage());
                     }
                 }
+
+                for(int i = 0; i < selectedGroups.size(); ++i)
+                {
+                    if (servSocket != null && outputs != null && inputs != null) {
+                        outputs.writeBytes("EHLO\r\n");
+                        outputs.writeBytes("MAIL From:" + selectedGroups.get(i).getSender().getMail()+ " \r\n");
+
+                        LinkedList<Mail> mailList = g.getReceivers();
+
+                        for(Mail mail : mailList)
+                        {
+                            outputs.writeBytes("RCPT To:" + mail.getMail() + "\r\n");
+                        }
+
+                        outputs.writeBytes("DATA\r\n");
+                        outputs.writeBytes("Subject:\r\n");
+                        outputs.writeBytes("body\r\n");
+                        outputs.writeBytes("\r\n.\r\n");
+                        outputs.writeBytes("QUIT\r\n");
+                }
             }
         }
-        catch(FileNotFoundException fnfEx) {
+
+    } catch(FileNotFoundException fnfEx) {
             System.out.println(fnfEx.getMessage());
         }
-    }
-}
+}}

@@ -27,8 +27,8 @@ public class Group {
         return sender;
     }
 
-    public Mail[] getReceivers() {
-        return (Mail[]) receivers.toArray();
+    public LinkedList<Mail> getReceivers() {
+        return (LinkedList<Mail>) receivers.clone();
     }
 
     public void setMessage(Message message) {
