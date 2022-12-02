@@ -43,7 +43,7 @@ At this stage, the mockmockserver Docker image has been created. Now we need to 
 
 In a terminal, execute this following command:
 ```
-docker run -p 8282:8282 -t mockmockserver
+docker run -p 2525:2525 -p 8282:8282 mockmockserver
 ```
 
 
