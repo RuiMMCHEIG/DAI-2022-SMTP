@@ -6,7 +6,7 @@ public class Client {
     public static void main(String[] args) throws IOException {
 
         String host = "localhost";
-        int port = 25;
+        int port = 2525;
 
         try {
 
@@ -142,7 +142,6 @@ public class Client {
             }
 
             /* Messages selection */
-
             for (Group g : selectedGroups) {
                 System.out.println("\nPreparing to send prank for the following group : ");
                 System.out.println(g);
@@ -182,30 +181,26 @@ public class Client {
                         System.out.println(ioEx.getMessage());
                     }
                 }
+                // TESTER SI LE SOCKET EXISTE AVANT
+                outputs.writeBytes("EHLO leo\r\n");
 
-                for(int i = 0; i < selectedGroups.size(); ++i)
-                {
-                    if (servSocket != null && outputs != null && inputs != null) {
-                        outputs.writeBytes("EHLO\r\n");
-                        outputs.writeBytes("MAIL From:" + selectedGroups.get(i).getSender().getMail()+ " \r\n");
-
-                        LinkedList<Mail> mailList = g.getReceivers();
-
-                        for(Mail mail : mailList)
+                    for(Mail receivers : g.getReceivers())
+                    {
+                        for(Message msg : selectedMessages)
                         {
-                            outputs.writeBytes("RCPT To:" + mail.getMail() + "\r\n");
+                            outputs.writeBytes("MAIL From:" + g.getSender().getMail() + " \r\n");
+                            outputs.writeBytes("RCPT To:" + receivers.getMail() + "\r\n");
+                            outputs.writeBytes("DATA\r\n");
+                            outputs.writeBytes("Subject: " + msg.getHeader() + "\r\n");
+                            outputs.writeBytes(msg.getBody());
+                            outputs.writeBytes("\r\n.\r\n");
                         }
-
-                        outputs.writeBytes("DATA\r\n");
-                        outputs.writeBytes("Subject:\r\n");
-                        outputs.writeBytes("body\r\n");
-                        outputs.writeBytes("\r\n.\r\n");
-                        outputs.writeBytes("QUIT\r\n");
+                    }
                 }
-            }
-        }
 
-    } catch(FileNotFoundException fnfEx) {
+            outputs.writeBytes("QUIT\r\n");
+
+        } catch(FileNotFoundException fnfEx) {
             System.out.println(fnfEx.getMessage());
         }
 }}
