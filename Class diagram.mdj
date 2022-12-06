@@ -709,7 +709,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 373,
-											"top": 135,
+											"top": 165,
 											"width": 389.0859375,
 											"height": 13,
 											"text": "Group"
@@ -744,7 +744,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 368,
-									"top": 128,
+									"top": 158,
 									"width": 399.0859375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -771,7 +771,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 368,
-									"top": 153,
+									"top": 183,
 									"width": 399.0859375,
 									"height": 10
 								},
@@ -796,27 +796,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 373,
-											"top": 168,
+											"top": 198,
 											"width": 389.0859375,
 											"height": 13,
 											"text": "+Group(sender: Mail, receivers: LinkedList<Mail>)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAGEzTLsZxyrgRU=",
-											"_parent": {
-												"$ref": "AAAAAAGEzS7XtgDb7q4="
-											},
-											"model": {
-												"$ref": "AAAAAAGEzTLsXhyoLfM="
-											},
-											"font": "Arial;13;0",
-											"left": 373,
-											"top": 183,
-											"width": 389.0859375,
-											"height": 13,
-											"text": "+Group(sender: Mail, receivers: LinkedList<Mail>, message: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -848,7 +831,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 373,
-											"top": 198,
+											"top": 213,
 											"width": 389.0859375,
 											"height": 13,
 											"text": "+setMessage(message: Message): void",
@@ -865,35 +848,18 @@
 											},
 											"font": "Arial;13;0",
 											"left": 373,
-											"top": 213,
-											"width": 389.0859375,
-											"height": 13,
-											"text": "+toString(): String",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAGEzTa39zJgw5o=",
-											"_parent": {
-												"$ref": "AAAAAAGEzS7XtgDb7q4="
-											},
-											"model": {
-												"$ref": "AAAAAAGEzTa37jJdzUg="
-											},
-											"font": "Arial;13;0",
-											"left": 373,
 											"top": 228,
 											"width": 389.0859375,
 											"height": 13,
-											"text": "+sendMail(): void",
+											"text": "+toString(): String",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 368,
-									"top": 163,
+									"top": 193,
 									"width": 399.0859375,
-									"height": 83
+									"height": 53
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -931,9 +897,9 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 368,
-							"top": 128,
+							"top": 158,
 							"width": 399.0859375,
-							"height": 118,
+							"height": 88,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEzS7XtgDVrKE="
 							},
@@ -2214,45 +2180,6 @@
 						},
 						{
 							"_type": "UMLOperation",
-							"_id": "AAAAAAGEzTLsXhyoLfM=",
-							"_parent": {
-								"$ref": "AAAAAAGEzS7XtQDS5oI="
-							},
-							"name": "Group",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGEzTMzlh0ADro=",
-									"_parent": {
-										"$ref": "AAAAAAGEzTLsXhyoLfM="
-									},
-									"name": "sender",
-									"type": {
-										"$ref": "AAAAAAGEzSZ7Tv/Y8cs="
-									}
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGEzTMzlh0BEEA=",
-									"_parent": {
-										"$ref": "AAAAAAGEzTLsXhyoLfM="
-									},
-									"name": "receivers",
-									"type": "LinkedList<Mail>"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGEzTMzlx0CMUo=",
-									"_parent": {
-										"$ref": "AAAAAAGEzTLsXhyoLfM="
-									},
-									"name": "message",
-									"type": "String"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
 							"_id": "AAAAAAGEzTQaXC9u05w=",
 							"_parent": {
 								"$ref": "AAAAAAGEzS7XtQDS5oI="
@@ -2317,25 +2244,6 @@
 										"$ref": "AAAAAAGEzTZw6jGFbC0="
 									},
 									"type": "String",
-									"direction": "return"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGEzTa37jJdzUg=",
-							"_parent": {
-								"$ref": "AAAAAAGEzS7XtQDS5oI="
-							},
-							"name": "sendMail",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGEzTbM4jK1NF0=",
-									"_parent": {
-										"$ref": "AAAAAAGEzTa37jJdzUg="
-									},
-									"type": "void",
 									"direction": "return"
 								}
 							]
