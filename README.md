@@ -171,3 +171,20 @@ or
 ```
 cd Path_to_Project\Client\
 ```
+
+Run the client:
+```
+java -jar Client.jar
+```
+
+Once the client is running you should see a list of the groups setup in the CONFIG files:
+
+![](https://i.imgur.com/ARhWcPj.png)
+
+Firstly, you'll need to select one or multiple groups of victims (Example: 1,2,3)
+
+Then you need to choose one or multiple messages for each groups.
+
+Everything is described during the prompt. If everything is ok, you should see the message "Mail Written".
+
+To check if you have received the mails just go on the web Interface on your browser (localhost:8282), you should see every mails !
