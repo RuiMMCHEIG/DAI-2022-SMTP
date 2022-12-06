@@ -17,7 +17,7 @@ Mail contains a string for it's mail as well as an id to easily link mails to gr
 
 Message contains two strings, one for the header and one for the body.
 
-Group contains a sender Mail, a list of receivers Mails and can contain a Message. Group also has a function to setup the message, also allowing to change the message. And finnaly there's a function sendMail() that is used to send the forged mail.
+Group contains a sender Mail and a list of receivers Mails.
 
 Data is read from the .config files in \\Client\\CONFIG\\.
 
@@ -150,7 +150,7 @@ After every changes in the Dockerfile, you will need to rebuild the image. Follo
 And then, in a terminal, execute the following command to run the container:
 
 ```
-docker run -p NewWebInterfacePort:NewWebInterfacePort -t mockmockserver
+docker run -p NewSmtpPrt:NewSmtpPort -p NewWebInterfacePort:NewWebInterfacePort -t mockmockserver
 ```
 Change *NewWebInterfacePort* with the port number you want.
 
