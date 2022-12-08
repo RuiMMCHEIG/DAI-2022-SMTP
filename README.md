@@ -135,6 +135,7 @@ This section contains some useful information about MockMock.
 Basically, the default port 25 is used for the SMTP port and port 8282 for the web interface. It is important to note that on some systems, root permissions are required to listen on port 25. 
 
 ### How to change ports
+Only for advanced users.
 If port 8282 is already in use on your machine, it is also possible to change this in the Dockerfile configuration.
 
 In the Dockerfile, modify these line with new ports numbers:
@@ -154,6 +155,7 @@ docker run -p NewSmtpPrt:NewSmtpPort -p NewWebInterfacePort:NewWebInterfacePort 
 ```
 Change *NewWebInterfacePort* with the port number you want.
 
+Note: you'll need to modify the port on the file: Client.java and regenerate the jar file(client)
 ## How to use
 
 First, make sure you've [setup the SMTP server](#smtp-server-setup) and that it's running.
